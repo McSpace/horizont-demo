@@ -34,7 +34,7 @@ var job1 = schedule.scheduleJob('0 55 3 * * *', function(){
 // FareBot
 var token = '128527693:AAE6RpObn2uCnxKrW22hbdtAeAcC1E3JCQU';
 
-var banList = [-51270399, 216763507];
+var banList = [-51270399, 216763507, 113858364, -1001080152808];
 // my id 57787202
 
 var allUsers = [];
@@ -79,8 +79,13 @@ bot.on('message', function(msg) {
   
   console.log('==================================');
   //console.log('banList ', banList);
-  console.log(' msg.chat.id = ',msg.chat.id,  banList.indexOf(msg.chat.id));
-
+  console.log(' Message from UserId ' + msg.chat.id + (banList.indexOf(msg.chat.id)==-1)?" ok":" in BanList");
+  console.log('Type: ', msg);
+  
+  if(!msg.text) {
+      return;
+  }
+  
   var chatId = msg.chat.id;
   console.log('bot.on text:', msg.text);
   lastChat = chatId;
